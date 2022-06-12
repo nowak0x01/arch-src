@@ -48,3 +48,17 @@ chmod 755 ./main.sh && ./main.sh
 - weevely3
 - tplmap
 - evil-winrm
+- impacket-scripts
+- lynx
+- shodan-cli
+- whois
+- openssh
+- mysql
+- openbsd-netcat
+- traceroute
+- wireshark
+- wpscan
+- metasploit
+- libreoffice
+- smbclient
+- tcpdump
