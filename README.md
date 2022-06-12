@@ -62,3 +62,4 @@ chmod 755 ./main.sh && ./main.sh
 - libreoffice
 - smbclient
 - tcpdump
+- enum4linux
