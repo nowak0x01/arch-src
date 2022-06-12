@@ -116,6 +116,105 @@ pipx ensurepath
 pipx install crackmapexec
 pipx ensurepath
 
+# downloading enum4linux
+cd /opt
+git clone https://github.com/CiscoCXSecurity/enum4linux
+cd enum4linux
+rm -rf .git*
+git clone https://github.com/Wh1t3Fox/polenum
+cd polenum
+rm -rf .git*
+ln -sf $PWD/polenum.py /usr/local/bin/polenum
+mkdir -p /etc/samba
+cat << EOF > /etc/samba/smb.conf
+
+[global]
+	workgroup = workgroup
+	security = user
+	idmap uid = 16777216-33554431
+	idmap gid = 16777216-33554431
+;	template shell = /bin/false
+	winbind use default domain = false
+	winbind offline logon = false
+
+	server string = Samba Server %v
+
+;	netbios name = MYSERVER
+
+;	interfaces = lo eth0 192.168.12.2/24 192.168.13.2/24
+;	hosts allow = 127. 192.168.12. 192.168.13.
+
+;	log file = /var/log/samba/%m.log
+;	max log size = 50
+
+	passdb backend = tdbsam
+
+;	local master = no
+;	os level = 33
+;	preferred master = yes
+
+;	wins support = yes
+;	wins server = w.x.y.z
+;	wins proxy = yes
+
+;	dns proxy = yes
+
+;	load printers = yes
+	cups options = raw
+
+;	printcap name = /etc/printcap
+;	printcap name = lpstat
+;	printing = cups
+
+;	map archive = no
+;	map hidden = no
+;	map read only = no
+;	map system = no
+	username map = /etc/samba/smbusers
+	encrypt passwords = yes
+	guest ok = yes
+;	guest account = nobody
+;	store dos attributes = yes
+
+[homes]
+	comment = Home Directories
+	browseable = no
+	writable = yes
+	valid users = %S
+;	valid users = MYDOMAIN\%S
+
+[printers]
+	comment = All Printers
+	path = /var/spool/samba
+	browseable = no
+;	guest ok = no
+;	writable = No
+	printable = yes
+
+;	[Profiles]
+;	path = /var/lib/samba/profiles
+;	browseable = no
+;	guest ok = yes
+
+;	[public]
+;	comment = Public Stuff
+;	path = /home/samba
+;	public = yes
+;	writable = yes
+;	printable = no
+;	write list = +staff
+
+[downloads]
+	path = /root/downloads
+	writeable = yes
+	browseable = yes
+	valid users = root
+	public = no
+
+EOF
+ln -sf /opt/enum4linux/enum4linux.pl /usr/local/bin/
+chmod -R 777 /etc/samba/
+
 # downloading GitTools [git-dumper/git-extractor]
 cd /opt
 git clone https://github.com/internetwache/GitTools
