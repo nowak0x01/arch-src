@@ -291,3 +291,10 @@ cd evil-winrm
 rm -rf .git*
 gem install winrm winrm-fs stringio logger fileutils
 ln -sf $PWD/evil-winrm.rb /usr/local/bin/
+
+# downloading Seclists
+mkdir -p /wordlists && cd /wordlists
+git clone https://github.com/danielmiessler/SecLists.git
+cd SecLists && rm -rf .git*
+tar -xf /wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt.tar.gz -C /wordlists/SecLists/Passwords/Leaked-Databases/
+chmod -R 777 /wordlists/
