@@ -12,7 +12,7 @@ if [ ! $(head -1 /etc/shadow 2>&-) ];then
 	exit 1
 fi
 
-pacman -S php lynx code impacket python-shodan xclip whois openssh openvpn dnsutils inetutils go python python2 python-pip mariadb-clients openbsd-netcat traceroute tcpdump wireshark-qt wget gtk3 libxt mime-types dbus-glib ffmpeg libpulse jre11-openjdk feh unzip zip openldap smbclient mousepad git jython proxychains libreoffice freerdp tor torsocks metasploit nfs-utils docker net-snmp nfs-utils wpscan websvn subversion jq tk open-vm-tools gtkmm3 ttf-monofur perl-image-exiftool exploitdb tdb --noconfirm
+pacman -S php lynx code impacket python-shodan xclip whois openssh openvpn dnsutils inetutils go python python2 python-pip mariadb-clients openbsd-netcat traceroute tcpdump wireshark-qt wget gtk3 libxt mime-types dbus-glib ffmpeg libpulse jre11-openjdk feh unzip zip openldap smbclient mousepad git jython proxychains libreoffice freerdp tor torsocks metasploit nfs-utils docker net-snmp nfs-utils wpscan websvn subversion jq tk open-vm-tools gtkmm3 ttf-monofur perl-image-exiftool tdb --noconfirm
 
 # downloading firefox-quantum
 wget 'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US' -O ./gz
